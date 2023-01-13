@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/user/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, `views/user.html`));
+  res.show('user.html');
 });
 
 app.use(express.static(path.join(__dirname, '/public')));
@@ -29,11 +29,8 @@ app.get('/about', (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '/views/notFound.html'));
+  res.status(404).show('notFound.html');
 });
-// app.use((req, res) => {
-//   res.status(404).sendFile(path.join(__dirname, '/views/notFound.html'));
-// });
 
 app.listen(8000, () => {
   console.log('Server is running on port: 8000');
